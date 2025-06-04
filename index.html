@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Práctica con CRUD" />
+    <meta name="author" content="Ignacio Nazar" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Cartelera de películas</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container">
+          <a class="navbar-brand" href="./index.html">Cartelera de películas</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" href="./pages/error404.html"
+                  >Nosotros</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container my-4">
+      <div class="d-flex justify-content-between">
+        <h1>Lista de películas</h1>
+        <button class="btn btn-primary" id="btnAgregar">Agregar</button>
+      </div>
+      <section class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Título</th>
+              <th>Género</th>
+              <th>Director</th>
+              <th>Duración</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Dune: Parte Dos</td>
+              <td>Ciencia ficción, Aventura</td>
+              <td>Denis Villeneuve</td>
+              <td>166 min</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Oppenheimer</td>
+              <td>Biografía, Drama</td>
+              <td>Christopher Nolan</td>
+              <td>180 min</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Godzilla y Kong: El nuevo imperio</td>
+              <td>Acción, Ciencia ficción</td>
+              <td>Adam Wingard</td>
+              <td>115 min</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Spider-Man: No Way Home</td>
+              <td>Acción, Aventura</td>
+              <td>Jon Watts</td>
+              <td>148 min</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <!-- Modal Película -->
+    <div
+      class="modal fade"
+      id="modalPelicula"
+      tabindex="-1"
+      aria-labelledby="modalPeliculaLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="modalPeliculaLabel">
+              Administrar Película
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="nombre" class="form-label">Título</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nombre"
+                  minlength="2"
+                  maxlength="100"
+                  placeholder="Ej: Oppenheimer"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="género" class="form-label">Género</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="género"
+                  placeholder="Ej: Acción, Ciencia ficción"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="plataforma" class="form-label">Duración</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="plataforma"
+                  placeholder="Ej: 150 min"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="desarrollador" class="form-label">Director</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="desarrollador"
+                  minlength="2"
+                  maxlength="50"
+                  placeholder="Ej: Christopher Nolan"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="imagen" class="form-label">Imagen</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="imagen"
+                  placeholder="Ej: https://imagen-de-la-pelicula.jpg"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="descripción" class="form-label">Sinopsis</label>
+                <textarea
+                  class="form-control"
+                  id="descripción"
+                  placeholder="Agrega una breve sinopsis de la película"
+                  maxlength="250"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-dark text-light text-center py-3">
+      <p>&copy; Todos los derechos reservados</p>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/app.js" type="module"></script>
+  </body>
+</html>
