@@ -21,13 +21,19 @@ const crearPelicula = () => {
   );
   //guardar la película en un array
   cartelera.push(peliculaNueva);
-  console.log(cartelera)
+  console.log(cartelera);
   //guardar la cartelera en localstorage
-  guardarLocalStorage()
+  guardarLocalStorage();
   //dibujar esta pelicula nueva en la tabla
-  dibujarFila(peliculaNueva, cartelera.length)
+  dibujarFila(peliculaNueva, cartelera.length);
   limpiarFormulario();
   //mostrar un mensaje al usuario indicando que se creo la pelicula
+  Swal.fire({
+  title: "Pelicula creada",
+  text: `La pelicula ${peliculaNueva.nombre}, fue creada correctamente`,
+  icon: "success",
+});
+
 };
 
 const limpiarFormulario = () => {
@@ -35,23 +41,23 @@ const limpiarFormulario = () => {
 };
 
 const guardarLocalStorage = () => {
-    localStorage.setItem("carteleraKey", JSON.stringify(cartelera))
-}
+  localStorage.setItem("carteleraKey", JSON.stringify(cartelera));
+};
 
 const cargaDatosTabla = () => {
-    //verificar si la lista tiene datos
-    if(cartelera.length !== 0){
-        //dibujar una fila por cada pelicula de la lista
-        cartelera.map((pelicula, indice)=> dibujarFila(pelicula, indice + 1))
-    }
+  //verificar si la lista tiene datos
+  if (cartelera.length !== 0) {
+    //dibujar una fila por cada pelicula de la lista
+    cartelera.map((pelicula, indice) => dibujarFila(pelicula, indice + 1));
+  }
 
-    //si no hay datos en la lista mostrar un mensaje al usuario
-}
+  //si no hay datos en la lista mostrar un mensaje al usuario
+};
 
 const dibujarFila = (pelicula, indice) => {
-console.log(pelicula)
-//agregar una fila (tr) nueva al tbody de la tabla de peliculas
-tablaPeliculas.innerHTML += `<tr>
+  console.log(pelicula);
+  //agregar una fila (tr) nueva al tbody de la tabla de peliculas
+  tablaPeliculas.innerHTML += `<tr>
               <td>${indice}</td>
               <td>${pelicula.nombre}</td>
               <td>${pelicula.genero}</td>
@@ -62,8 +68,8 @@ tablaPeliculas.innerHTML += `<tr>
                 <button class="btn btn-danger">Borrar</button>
                 <button class="btn btn-info">Ver</button>
               </td>
-            </tr>`
-}
+            </tr>`;
+};
 
 //declarar variables
 const btnAgregar = document.getElementById("btnAgregar");
@@ -75,7 +81,7 @@ const inputDirector = document.querySelector("#director");
 const inputImagen = document.querySelector("#imagen");
 const inputSinopsis = document.querySelector("#descripción");
 const cartelera = JSON.parse(localStorage.getItem("carteleraKey")) || [];
-const tablaPeliculas = document.querySelector("tbody")
+const tablaPeliculas = document.querySelector("tbody");
 
 //agrego los manejadores de eventos
 btnAgregar.addEventListener("click", abrirModal);
@@ -87,4 +93,4 @@ formularioPelicula.addEventListener("submit", (e) => {
 });
 
 //resto de la logica
-cargaDatosTabla()
+cargaDatosTabla();
