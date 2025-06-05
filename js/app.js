@@ -21,12 +21,20 @@ const crearPelicula = () => {
   );
   //guardar la película en un array
   cartelera.push(peliculaNueva);
+  console.log(cartelera)
+  //guardar la cartelera en localstorage
+  guardarLocalStorage()
   limpiarFormulario();
+  //mostrar un mensaje al usuario indicando que se creo la pelicula
 };
 
 const limpiarFormulario = () => {
   formularioPelicula.reset();
 };
+
+const guardarLocalStorage = () => {
+    localStorage.setItem("carteleraKey", JSON.stringify(cartelera))
+}
 
 //declarar variables
 const btnAgregar = document.getElementById("btnAgregar");
@@ -37,7 +45,7 @@ const inputDuracion = document.querySelector("#plataforma");
 const inputDirector = document.querySelector("#desarrollador");
 const inputImagen = document.querySelector("#imagen");
 const inputSinopsis = document.querySelector("#descripción");
-const cartelera = [];
+const cartelera = JSON.parse(localStorage.getItem("carteleraKey")) || [];
 
 //agrego los manejadores de eventos
 btnAgregar.addEventListener("click", abrirModal);
