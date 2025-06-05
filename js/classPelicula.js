@@ -2,17 +2,17 @@ export default class Pelicula{
   #id;
   #nombre;
   #genero;
-  #plataforma;
-  #desarrollador;
+  #director;
+  #duracion;
   #imagen;
   #descripcion;
 
-  constructor(nombre, genero, plataforma, desarrollador, imagen, descripcion) {
+  constructor(nombre, genero, director, duracion, imagen, descripcion) {
     this.#id = crypto.randomUUID();
     this.#nombre = nombre;
     this.#genero = genero;
-    this.#plataforma = plataforma;
-    this.#desarrollador = desarrollador;
+    this.#director = director;
+    this.#duracion = duracion;
     this.#imagen = imagen;
     this.#descripcion = descripcion;
   }
@@ -30,12 +30,12 @@ export default class Pelicula{
     return this.#genero;
   }
 
-  get plataforma() {
-    return this.#plataforma;
+  get director() {
+    return this.#director;
   }
 
-  get desarrollador() {
-    return this.#desarrollador;
+  get duracion() {
+    return this.#duracion;
   }
 
   get imagen() {
@@ -55,12 +55,12 @@ export default class Pelicula{
     this.#genero = nuevoGenero;
   }
 
-  set plataforma(nuevaPlataforma) {
-    this.#plataforma = nuevaPlataforma;
+  set director(nuevoDirector) {
+    this.#director = nuevoDirector;
   }
 
-  set desarrollador(nuevoDesarrollador) {
-    this.#desarrollador = nuevoDesarrollador;
+  set duracion(nuevaDuracion) {
+    this.#duracion = nuevaDuracion;
   }
 
   set imagen(nuevaImagen) {
@@ -77,8 +77,8 @@ export default class Pelicula{
       id: this.id,
       nombre: this.nombre,
       genero: this.genero,
-      plataforma: this.plataforma,
-      desarrollador: this.desarrollador,
+      director: this.director,
+      duracion: this.duracion,
       imagen: this.imagen,
       descripcion: this.descripcion,
     };

@@ -14,8 +14,8 @@ const crearPelicula = () => {
   const peliculaNueva = new Pelicula(
     inputTitulo.value,
     inputGenero.value,
-    inputDuracion.value,
     inputDirector.value,
+    inputDuracion.value,
     inputImagen.value,
     inputSinopsis.value
   );
@@ -36,16 +36,44 @@ const guardarLocalStorage = () => {
     localStorage.setItem("carteleraKey", JSON.stringify(cartelera))
 }
 
+const cargaDatosTabla = () => {
+    //verificar si la lista tiene datos
+    if(cartelera.length !== 0){
+        //dibujar una fila por cada pelicula de la lista
+        cartelera.map((pelicula)=> dibujarFila(pelicula))
+    }
+
+    //si no hay datos en la lista mostrar un mensaje al usuario
+}
+
+const dibujarFila = (pelicula) => {
+console.log(pelicula)
+//agregar una fila (tr) nueva al tbody de la tabla de peliculas
+tablaPeliculas.innerHTML += `<tr>
+              <td>1</td>
+              <td>${pelicula.nombre}</td>
+              <td>${pelicula.genero}</td>
+              <td>${pelicula.director}</td>
+              <td>${pelicula.duracion}</td>
+              <td>
+                <button class="btn btn-warning">Editar</button>
+                <button class="btn btn-danger">Borrar</button>
+                <button class="btn btn-info">Ver</button>
+              </td>
+            </tr>`
+}
+
 //declarar variables
 const btnAgregar = document.getElementById("btnAgregar");
 const formularioPelicula = document.querySelector("form");
 const inputTitulo = document.querySelector("#nombre");
 const inputGenero = document.querySelector("#género");
-const inputDuracion = document.querySelector("#plataforma");
-const inputDirector = document.querySelector("#desarrollador");
+const inputDuracion = document.querySelector("#duracion");
+const inputDirector = document.querySelector("#director");
 const inputImagen = document.querySelector("#imagen");
 const inputSinopsis = document.querySelector("#descripción");
 const cartelera = JSON.parse(localStorage.getItem("carteleraKey")) || [];
+const tablaPeliculas = document.querySelector("tbody")
 
 //agrego los manejadores de eventos
 btnAgregar.addEventListener("click", abrirModal);
@@ -55,3 +83,6 @@ formularioPelicula.addEventListener("submit", (e) => {
   crearPelicula();
   //algun dia aqui voy a editar un pelicula
 });
+
+//resto de la logica
+cargaDatosTabla()
