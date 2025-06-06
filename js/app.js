@@ -79,6 +79,9 @@ window.borrarPelicula = (id)=>{
   //actualizar el localstorage
   guardarLocalStorage()
   //actualizar la tabla de peliculas
+  console.log(posicionPeliculaBuscada)
+  tablaPeliculas.children[posicionPeliculaBuscada].remove()
+  //todo: corregir las celdas de la tabla cuando borramos una pelicula
 }
 
 
