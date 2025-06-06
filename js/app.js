@@ -65,11 +65,22 @@ const dibujarFila = (pelicula, indice) => {
               <td>${pelicula.duracion}</td>
               <td>
                 <button class="btn btn-warning">Editar</button>
-                <button class="btn btn-danger">Borrar</button>
+                <button class="btn btn-danger" onclick="borrarPelicula('${pelicula.id}')">Borrar</button>
                 <button class="btn btn-info">Ver</button>
               </td>
             </tr>`;
 };
+window.borrarPelicula = (id)=>{
+  console.log("aqui deberia borrar una pelicula")
+  console.log(id)
+  //buscar y borrar la pelicula del array cartelera
+  const posicionPeliculaBuscada = cartelera.findIndex((pelicula)=> pelicula.id === id)
+  cartelera.splice(posicionPeliculaBuscada, 1)
+  //actualizar el localstorage
+  guardarLocalStorage()
+  //actualizar la tabla de peliculas
+}
+
 
 //declarar variables
 const btnAgregar = document.getElementById("btnAgregar");
