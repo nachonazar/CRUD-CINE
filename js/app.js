@@ -73,6 +73,24 @@ const dibujarFila = (pelicula, indice) => {
 window.borrarPelicula = (id)=>{
   console.log("aqui deberia borrar una pelicula")
   console.log(id)
+  //aqui voy a mostrar un mensaje de confirmacion al borrar una pelicula
+  /*Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, delete it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire({
+      title: "Deleted!",
+      text: "Your file has been deleted.",
+      icon: "success"
+    });
+  }
+});*/
   //buscar y borrar la pelicula del array cartelera
   const posicionPeliculaBuscada = cartelera.findIndex((pelicula)=> pelicula.id === id)
   cartelera.splice(posicionPeliculaBuscada, 1)
