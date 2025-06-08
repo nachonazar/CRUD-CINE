@@ -12,12 +12,12 @@ const crearPelicula = () => {
   //todo: tomar los datos del formulario y validarlos
   //con los datos voy a crear un objeto pelicula
   const peliculaNueva = new Pelicula(
-    inputTitulo.value,
+    inputNombre.value,
     inputGenero.value,
     inputDirector.value,
     inputDuracion.value,
     inputImagen.value,
-    inputSinopsis.value
+    inputDescripcion.value
   );
   //guardar la película en un array
   cartelera.push(peliculaNueva);
@@ -64,7 +64,7 @@ const dibujarFila = (pelicula, indice) => {
               <td>${pelicula.director}</td>
               <td>${pelicula.duracion}</td>
               <td>
-                <button class="btn btn-warning">Editar</button>
+                <button class="btn btn-warning" onclick="prepararPelicula('${pelicula.id}')">Editar</button>
                 <button class="btn btn-danger" onclick="borrarPelicula('${pelicula.id}')">Borrar</button>
                 <button class="btn btn-info">Ver</button>
               </td>
@@ -102,16 +102,33 @@ window.borrarPelicula = (id)=>{
   //todo: corregir las celdas de la tabla cuando borramos una pelicula
 }
 
+window.prepararPelicula = (id)=>{
+  console.log("aqui tengo que preparar la pelicula", id)
+  //abrir el modal
+  abrirModal()
+  //cargar los datos en el modal
+  const peliculaBuscada = cartelera.find((pelicula)=> pelicula.id === id)
+  inputNombre.value = peliculaBuscada.nombre
+  inputGenero.value = peliculaBuscada.genero
+  inputDirector.value = peliculaBuscada.director
+  inputDuracion.value = peliculaBuscada.duracion
+  inputImagen.value = peliculaBuscada.imagen
+  inputDescripcion.value = peliculaBuscada.descripcion
+  
+  //abrir el modal
+  abrirModal()
+}
+
 
 //declarar variables
 const btnAgregar = document.getElementById("btnAgregar");
 const formularioPelicula = document.querySelector("form");
-const inputTitulo = document.querySelector("#nombre");
+const inputNombre = document.querySelector("#nombre");
 const inputGenero = document.querySelector("#género");
 const inputDuracion = document.querySelector("#duracion");
 const inputDirector = document.querySelector("#director");
 const inputImagen = document.querySelector("#imagen");
-const inputSinopsis = document.querySelector("#descripción");
+const inputDescripcion = document.querySelector("#descripción");
 const cartelera = JSON.parse(localStorage.getItem("carteleraKey")) || [];
 const tablaPeliculas = document.querySelector("tbody");
 
