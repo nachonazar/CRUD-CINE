@@ -27,6 +27,7 @@ const crearPelicula = () => {
   //dibujar esta pelicula nueva en la tabla
   dibujarFila(peliculaNueva, cartelera.length);
   limpiarFormulario();
+  modalPelicula.hide()
   //mostrar un mensaje al usuario indicando que se creo la pelicula
   Swal.fire({
     title: "Pelicula creada",
